@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-import { UserGender } from './user.types';
+import { UserGender } from '../types/user/user.types';
 
 interface Message {
   [key: string]: string;
