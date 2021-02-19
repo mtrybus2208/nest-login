@@ -25,6 +25,10 @@ import { AuthModule } from './auth/auth.module';
         password: configService.get<string>('database.password'),
         database: configService.get<string>('database.database'),
         entities: ['dist/**/*.entity{.ts,.js}'],
+        extra: {
+          ssl: true,
+        },
+        synchronize: true,
       }),
     }),
     AuthModule,
