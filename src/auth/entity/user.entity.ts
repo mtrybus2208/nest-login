@@ -1,6 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 
 import { UserGender } from '../types/user/user.types';
+import { Gender } from './gender.entity';
 
 @Entity()
 export class User {
@@ -16,10 +23,7 @@ export class User {
   @Column('int')
   age: number;
 
-  @Column({
-    type: 'enum',
-    enum: UserGender,
-    default: UserGender.MALE,
-  })
-  gender: UserGender;
+  @OneToOne(() => Gender, (gender) => gender.type, { cascade: true })
+  @JoinColumn()
+  gender?: UserGender;
 }
