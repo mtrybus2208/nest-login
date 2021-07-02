@@ -91,5 +91,8 @@ export class User1623566240099 implements MigrationInterface {
       .execute();
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable('gender');
+    await queryRunner.dropTable('user');
+  }
 }
